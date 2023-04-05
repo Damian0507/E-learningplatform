@@ -10,11 +10,21 @@ import android.widget.Button;
 import com.example.e_learningplatform.Home.HomeStudentActivity;
 
 public class LoginActivity extends AppCompatActivity {
-Button sing_in_btn;
+
+    Button sing_in_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sing_in();
+
+
+    }
+
+
+    public void sing_in(){
 
         sing_in_btn = findViewById(R.id.sing_in_button);
 
@@ -27,6 +37,7 @@ Button sing_in_btn;
 
             }
         });
-
-    }
 }
+
+}
+
