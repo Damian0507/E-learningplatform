@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent i = new Intent(getApplicationContext(), HomeStudentActivity.class);
                 startActivity(i);
+                finish();
 
             }
         });
