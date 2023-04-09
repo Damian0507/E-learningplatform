@@ -40,7 +40,7 @@ public class HomeStudentFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         
-        dateInitialize();
+        dateInitialize_home();
 
         recyclerView = view.findViewById(R.id.materii_recycleView);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
@@ -50,7 +50,7 @@ public class HomeStudentFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
     }
 
-    private void dateInitialize() {
+    private void dateInitialize_home() {
 
         materiiArrayList.add(new Materii("Procesare paralela si distribuita",R.drawable.ppsd_image));
         materiiArrayList.add(new Materii("Electronica de putere",R.drawable.edp_image));

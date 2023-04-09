@@ -45,6 +45,10 @@ public class HomeStudentActivity extends AppCompatActivity {
         badgeDrawable.setVisible(true);
         badgeDrawable.setNumber(8);
 
+        BadgeDrawable badgeDrawablePersonal = student_bottomNavigationView.getOrCreateBadge(R.id.person);
+        badgeDrawablePersonal.setVisible(true);
+        badgeDrawablePersonal.setNumber(3);
+
          student_bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
              @Override
              public boolean onNavigationItemSelected(@NonNull MenuItem item) {
