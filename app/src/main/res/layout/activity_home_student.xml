@@ -20,13 +20,13 @@
         android:id="@+id/bottom_navigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/frame_layout_border"
+        android:paddingTop="6dp"
+        app:itemIconSize="34dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_alignParentBottom = "true"
-        android:background="@drawable/frame_layout_border"
-        app:menu="@menu/bottom_nav_menu"
-        app:itemIconSize="38dp"
-        />
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
