@@ -1,6 +1,8 @@
 package com.example.e_learningplatform.HomeAdapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.e_learningplatform.Student.CoursesStudentActivity;
 import com.example.e_learningplatform.HomeClasses.Materii;
 import com.example.e_learningplatform.R;
 
@@ -45,6 +47,16 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         Materii materii = materiiArrayList.get(position);
         holder.nume_materie_textView.setText(materii.getTitle());
         holder.materie_imageView.setImageResource(materii.getImage());
+
+        holder.materie_imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, CoursesStudentActivity.class);
+                context.startActivity(i);
+                ((Activity)context).finish();
+
+            }
+        });
 
     }
 
