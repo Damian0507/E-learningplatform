@@ -18,7 +18,7 @@
         android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/student_ID_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/nume_submit_text_editText" />
 
     <TextView
         android:id="@+id/forgot_password_textView"
@@ -32,7 +32,7 @@
         android:textColor="@color/blue_text"
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pass_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/prenume_submit_test_editText" />
 
     <ImageView
         android:id="@+id/logo_imageview"
@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/firstpage_asset_imageview" />
 
     <EditText
-        android:id="@+id/student_ID_editText"
+        android:id="@+id/nume_submit_text_editText"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/pass_editText"
+        android:id="@+id/prenume_submit_test_editText"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"

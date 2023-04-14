@@ -58,6 +58,17 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             }
         });
 
+        holder.nume_materie_textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(context, CoursesStudentActivity.class);
+                context.startActivity(i);
+                ((Activity)context).finish();
+
+            }
+        });
+
     }
 
     @Override
