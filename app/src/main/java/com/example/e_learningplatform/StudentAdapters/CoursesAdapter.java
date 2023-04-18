@@ -49,10 +49,16 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.MyViewHo
         holder.curs_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Intent i = new Intent(context, CourseActivity.class);
+                //i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //context.startActivity(i);
+               //((Activity)context).finish();
+
+                /*TO DO: Check why app gets crash when jump backward to courses and trying to open course again*/
                 Intent i = new Intent(context, CourseActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
-               //((Activity)context).finish();
+               ((Activity)context).finish();
             }
         });
 
