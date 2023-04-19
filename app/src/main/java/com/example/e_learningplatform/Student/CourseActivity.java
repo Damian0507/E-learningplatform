@@ -12,17 +12,48 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.e_learningplatform.R;
+import com.github.barteksc.pdfviewer.PDFView;
 
 public class CourseActivity extends AppCompatActivity {
 
     Button back_button;
     PlayerView playerView;
     ExoPlayer player;
+    PDFView pdfView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
+
+        play_video();
+
+        set_PDF();
+
+        back_button();
+    }
+
+    private void back_button() {
+
+        back_button = findViewById(R.id.course_back_button);
+
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                player.pause();
+                Intent i = new Intent(getApplicationContext(), CoursesStudentActivity.class);
+                //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                startActivity(i);
+                finish();
+            }
+        });
+
+
+    }
+
+    private void play_video(){
+
 
         playerView = findViewById(R.id.player_view);
 
@@ -38,24 +69,14 @@ public class CourseActivity extends AppCompatActivity {
 
         player.pause();
 
-        back_button();
     }
 
-    private void back_button() {
+    private void set_PDF(){
 
-        back_button = findViewById(R.id.course_back_button);
+        pdfView = findViewById(R.id.curs_PDFView);
 
-        back_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                player.pause();
-                Intent i = new Intent(getApplicationContext(), CoursesStudentActivity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                //i.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                startActivity(i);
-                finish();
-            }
-        });
+        pdfView.fromAsset("curs1.pdf").load();
+
 
 
     }

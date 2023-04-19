@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/chat_cardView"
-        android:layout_width="400dp"
+        android:layout_width="0dp"
         android:layout_height="154dp"
         android:background="@drawable/chat_item_border"
         app:cardBackgroundColor="#F3F6FF"
@@ -53,9 +53,9 @@
             android:id="@+id/hour_of_last_message_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="144dp"
             android:layout_marginTop="86dp"
+            android:layout_gravity="right"
+            android:paddingRight="10dp"
             android:fontFamily="@font/poppins_medium"
             android:text="12:10"
             android:textColor="@color/gray"
