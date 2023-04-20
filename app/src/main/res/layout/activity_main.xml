@@ -10,14 +10,13 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="248dp"
         android:fontFamily="@font/poppins_medium"
         android:text="Password"
         android:textAlignment="viewStart"
         android:textColor="@color/black"
         android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nume_submit_text_editText" />
 
@@ -25,14 +24,13 @@
         android:id="@+id/forgot_password_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="200dp"
         android:fontFamily="@font/poppins_medium"
         android:text="Forgot Password?"
         android:textAlignment="viewStart"
         android:textColor="@color/blue_text"
         android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/prenume_submit_test_editText" />
 
@@ -40,7 +38,7 @@
         android:id="@+id/logo_imageview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="36dp"
         android:src="@drawable/logo_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,22 +58,23 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="244dp"
         android:fontFamily="@font/poppins_medium"
         android:text="Student ID"
         android:textAlignment="viewStart"
         android:textColor="@color/black"
         android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstpage_asset_imageview" />
 
     <EditText
         android:id="@+id/nume_submit_text_editText"
-        android:layout_width="310dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginRight="52dp"
         android:background="@drawable/edit_text_border"
         android:ems="10"
         android:fontFamily="@font/poppins_light"
@@ -95,8 +94,10 @@
 
     <EditText
         android:id="@+id/prenume_submit_test_editText"
-        android:layout_width="310dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="52dp"
+        android:layout_marginRight="52dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/edit_text_border"
         android:ems="10"
@@ -117,9 +118,12 @@
 
     <Button
         android:id="@+id/sing_in_button"
-        android:layout_width="310dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="52dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/blue_objects"
         android:backgroundTintMode="add"
         android:fontFamily="@font/poppins_semibold"
@@ -130,7 +134,9 @@
         android:textStyle="normal"
         app:cornerRadius="10dp"
         app:iconTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgot_password_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/forgot_password_textView"
+        app:layout_constraintVertical_bias="0.041" />
 </androidx.constraintlayout.widget.ConstraintLayout>

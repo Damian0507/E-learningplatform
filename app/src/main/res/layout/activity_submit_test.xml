@@ -37,12 +37,12 @@
         android:id="@+id/nume_materie_submit_test_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Procesare paralela si distribuita"
         android:textColor="@color/blue_objects"
         android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
@@ -50,7 +50,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="56dp"
         android:fontFamily="@font/poppins_medium"
         android:text="Nume:"
@@ -62,7 +62,7 @@
 
     <EditText
         android:id="@+id/nume_submit_text_editText"
-        android:layout_width="340dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:background="@drawable/edit_text_border"
@@ -80,13 +80,17 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"/>
 
     <EditText
         android:id="@+id/prenume_submit_test_editText"
-        android:layout_width="340dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
         android:background="@drawable/edit_text_border"
         android:ems="10"
         android:fontFamily="@font/poppins_light"
@@ -123,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/poppins_regulart"
         android:text="procesare_paralela_si_distribuita.pdf"
         android:textColor="@color/gray"
@@ -136,7 +140,7 @@
         android:layout_width="165dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/blue_objects"
         android:backgroundTintMode="add"
         android:drawableLeft="@drawable/upload_logo"
@@ -153,11 +157,13 @@
 
     <Button
         android:id="@+id/submit_button"
-        android:layout_width="340dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:backgroundTint="@color/blue_objects"
         android:backgroundTintMode="add"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
         android:fontFamily="@font/poppins_semibold"
         android:paddingTop="8dp"
         android:text="Submit"
@@ -166,9 +172,12 @@
         android:textStyle="normal"
         app:cornerRadius="10dp"
         app:iconTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sing_in_button" />
+        app:layout_constraintTop_toBottomOf="@+id/sing_in_button"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
