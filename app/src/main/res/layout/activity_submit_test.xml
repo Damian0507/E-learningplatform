@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nume_materie_submit_test_textView" />
 
     <EditText
-        android:id="@+id/nume_submit_text_editText"
+        android:id="@+id/student_ID_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -85,7 +85,7 @@
         android:layout_marginRight="36dp"/>
 
     <EditText
-        android:id="@+id/prenume_submit_test_editText"
+        android:id="@+id/password_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -120,7 +120,7 @@
         android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nume_submit_text_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/student_ID_editText" />
 
     <TextView
         android:id="@+id/nume_test_textView"
@@ -134,7 +134,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.211"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prenume_submit_test_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/password_editText" />
 
     <Button
         android:id="@+id/sing_in_button"
