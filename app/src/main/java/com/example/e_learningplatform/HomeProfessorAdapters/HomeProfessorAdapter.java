@@ -1,6 +1,8 @@
 package com.example.e_learningplatform.HomeProfessorAdapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_learningplatform.HomeAdapters.HomeAdapter;
 import com.example.e_learningplatform.HomeClasses.Materii;
+import com.example.e_learningplatform.HomeProfessor.OptionsActivity;
 import com.example.e_learningplatform.HomeProfessorClasses.ProfessorMaterii;
 import com.example.e_learningplatform.R;
+import com.example.e_learningplatform.Student.CoursesStudentActivity;
 
 import java.util.ArrayList;
 
@@ -46,6 +50,27 @@ public class HomeProfessorAdapter extends RecyclerView.Adapter<HomeProfessorAdap
         ProfessorMaterii materii = materiiArrayList.get(position);
         holder.nume_materie_textView.setText(materii.getTitle());
         holder.materie_imageView.setImageResource(materii.getImage());
+
+        holder.materie_imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, OptionsActivity.class);
+                context.startActivity(i);
+                ((Activity)context).finish();
+
+            }
+        });
+
+        holder.nume_materie_textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(context, OptionsActivity.class);
+                context.startActivity(i);
+                ((Activity)context).finish();
+
+            }
+        });
 
     }
 
