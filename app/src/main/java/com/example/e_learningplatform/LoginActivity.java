@@ -99,11 +99,15 @@ public class LoginActivity extends AppCompatActivity {
                                 startActivity(i);
                                 finish();
 
+                                Toast.makeText(LoginActivity.this,"Login succsefully!",Toast.LENGTH_SHORT).show();
+
                             }else{
 
                                 Intent i = new Intent(getApplicationContext(),HomeProfessorActivity.class);
                                 startActivity(i);
                                 finish();
+
+                                Toast.makeText(LoginActivity.this,"Login succsefully!",Toast.LENGTH_SHORT).show();
 
                             }
 
@@ -114,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
 
-                        Toast.makeText(LoginActivity.this,"Login succsefully!",Toast.LENGTH_SHORT).show();
+
 
 
 
