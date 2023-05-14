@@ -18,21 +18,7 @@
         android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/student_ID_editText" />
-
-    <TextView
-        android:id="@+id/forgot_password_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Forgot Password?"
-        android:textAlignment="viewStart"
-        android:textColor="@color/blue_text"
-        android:textSize="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/user_ID_editText" />
 
     <ImageView
         android:id="@+id/logo_imageview"
@@ -61,7 +47,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="Student ID"
+        android:text="User ID"
         android:textAlignment="viewStart"
         android:textColor="@color/black"
         android:textSize="12dp"
@@ -69,16 +55,16 @@
         app:layout_constraintTop_toBottomOf="@+id/firstpage_asset_imageview" />
 
     <EditText
-        android:id="@+id/student_ID_editText"
+        android:id="@+id/user_ID_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:layout_marginLeft="52dp"
+        android:layout_marginTop="4dp"
         android:layout_marginRight="52dp"
         android:background="@drawable/edit_text_border"
         android:ems="10"
         android:fontFamily="@font/poppins_light"
-        android:hint="Enter Student ID"
+        android:hint="Enter user ID"
         android:inputType="textPersonName"
         android:minHeight="46dp"
         android:paddingLeft="20dp"
@@ -121,14 +107,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="52dp"
-        android:layout_marginTop="8dp"
         android:layout_marginRight="52dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/blue_objects"
         android:backgroundTintMode="add"
         android:fontFamily="@font/poppins_semibold"
         android:paddingTop="8dp"
-        android:text="Sing In"
+        android:text="Login"
         android:textAllCaps="false"
         android:textSize="16dp"
         android:textStyle="normal"
@@ -137,6 +122,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgot_password_textView"
-        app:layout_constraintVertical_bias="0.041" />
+        app:layout_constraintTop_toBottomOf="@+id/password_editText"
+        app:layout_constraintVertical_bias="0.204" />
 </androidx.constraintlayout.widget.ConstraintLayout>
