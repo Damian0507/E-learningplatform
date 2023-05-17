@@ -103,7 +103,11 @@ public class LoginActivity extends AppCompatActivity {
 
                             }else{
 
+                                String send_username;
+                                send_username = username;
+
                                 Intent i = new Intent(getApplicationContext(),HomeProfessorActivity.class);
+                                i.putExtra("Username", send_username);
                                 startActivity(i);
                                 finish();
 

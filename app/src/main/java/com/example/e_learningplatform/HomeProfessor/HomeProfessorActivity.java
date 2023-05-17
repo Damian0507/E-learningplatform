@@ -1,9 +1,12 @@
 package com.example.e_learningplatform.HomeProfessor;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.e_learningplatform.Home.ChatStudentFragment;
@@ -31,10 +34,23 @@ public class HomeProfessorActivity extends AppCompatActivity {
 
     public void set_fragment()
     {
+        //get data from login activity
+
+        String username = getIntent().getStringExtra("Username");
+
+        Log.d(TAG, "set_fragment: "+ username);
+
+
         HomeProfessorFragment homeProfessor_fragment = new HomeProfessorFragment();
         ChatProfessorFragment chatProfessor_fragment = new ChatProfessorFragment();
 
         professor_bottomNavigationView = findViewById(R.id.bottom_professor_navigationView);
+
+
+        //send data to profesor fragment
+        Bundle bundle = new Bundle();
+        bundle.putString("Username",username);
+        homeProfessor_fragment.setArguments(bundle);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.materii_professor_frameLayout,homeProfessor_fragment).commit();
 

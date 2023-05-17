@@ -2,6 +2,7 @@ package com.example.e_learningplatform.HomeProfessorClasses;
 
 public class ProfessorMaterii {
 
+
     String title;
     int image;
 
@@ -9,6 +10,7 @@ public class ProfessorMaterii {
         this.title = title;
         this.image = image;
     }
+
 
     public String getTitle() {
         return title;

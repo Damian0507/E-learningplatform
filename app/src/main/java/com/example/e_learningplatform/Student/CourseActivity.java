@@ -61,7 +61,7 @@ public class CourseActivity extends AppCompatActivity {
 
         playerView.setPlayer(player);
 
-        MediaItem mediaItem = MediaItem.fromUri("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4");
+        MediaItem mediaItem = MediaItem.fromUri("https://firebasestorage.googleapis.com/v0/b/parkourapp2.appspot.com/o/20211010_183238_1.mp4?alt=media&token=ed071a9d-7b76-44ab-826c-5e270d646b3b");
 
         player.setMediaItem(mediaItem);
 
