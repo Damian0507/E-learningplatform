@@ -40,13 +40,21 @@ public class HomeProfessorFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+        Log.d(TAG, "onCreateView: am ajuns aici" );
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home_professor, container, false);
+        
+        
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
 
         //get data from homeprofessoractivity
         String username = getArguments().getString("Username");
@@ -59,47 +67,47 @@ public class HomeProfessorFragment extends Fragment {
 
         dateInitialize_home(username);
 
-        recyclerView = view.findViewById(R.id.materii_professor_recycleView);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
-        HomeProfessorAdapter homeProfessorAdapter = new HomeProfessorAdapter(getContext(),materiiArrayList);
-        recyclerView.setAdapter(homeProfessorAdapter);
-        homeProfessorAdapter.notifyDataSetChanged();
-        recyclerView.setHasFixedSize(true);
 
 
     }
     private void dateInitialize_home(String username) {
 
-        materiiArrayList.add(new ProfessorMaterii("Procesare paralela si distribuita",R.drawable.ppsd_image));
-        materiiArrayList.add(new ProfessorMaterii("Electronica de putere",R.drawable.edp_image));
-        materiiArrayList.add(new ProfessorMaterii("Prelucrarea semnalelor",R.drawable.pc_image));
-        materiiArrayList.add(new ProfessorMaterii("Condicerea structurilor flexibile de fabricatie",R.drawable.cpc_image));
-        materiiArrayList.add(new ProfessorMaterii("Programare orientata pe obiece",R.drawable.opo_image));
-        materiiArrayList.add(new ProfessorMaterii("Sisteme de conducere a procesor continue",R.drawable.sfdf_image));
+//        materiiArrayList.add(new ProfessorMaterii("Procesare paralela si distribuita",R.drawable.ppsd_image));
+//        materiiArrayList.add(new ProfessorMaterii("Electronica de putere",R.drawable.edp_image));
+//        materiiArrayList.add(new ProfessorMaterii("Prelucrarea semnalelor",R.drawable.pc_image));
+//        materiiArrayList.add(new ProfessorMaterii("Condicerea structurilor flexibile de fabricatie",R.drawable.cpc_image));
+//        materiiArrayList.add(new ProfessorMaterii("Programare orientata pe obiece",R.drawable.opo_image));
+//        materiiArrayList.add(new ProfessorMaterii("Sisteme de conducere a procesor continue",R.drawable.sfdf_image));
 
-//        database = FirebaseDatabase.getInstance("https://e-learning-platform-3b8e7-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users").child(username).child("Materii").child("Logica computationala");
-//        database.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                String username_DB = username;
-//
-//                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-//
-//
-//
-//
-//
-//
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+        recyclerView = getView().findViewById(R.id.materii_professor_recycleView);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        HomeProfessorAdapter homeProfessorAdapter = new HomeProfessorAdapter(getContext(),materiiArrayList);
+        recyclerView.setAdapter(homeProfessorAdapter);
+        recyclerView.setHasFixedSize(true);
+
+        database = FirebaseDatabase.getInstance("https://e-learning-platform-3b8e7-default-rtdb.europe-west1.firebasedatabase.app").
+                getReference("Users").child(username).child("Materii");
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                materiiArrayList.clear();
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+
+                    ProfessorMaterii professorMaterii = dataSnapshot.getValue(ProfessorMaterii.class);
+                    materiiArrayList.add(professorMaterii);
+
+                }
+                homeProfessorAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
     }

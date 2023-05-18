@@ -29,6 +29,7 @@ public class HomeProfessorActivity extends AppCompatActivity {
         professor_bottomNavigationView = findViewById(R.id.bottom_professor_navigationView);
         professor_bottomNavigationView.setItemIconTintList(null);
 
+
         set_fragment();
     }
 

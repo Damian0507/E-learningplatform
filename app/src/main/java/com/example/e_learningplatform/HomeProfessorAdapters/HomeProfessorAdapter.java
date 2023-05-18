@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.e_learningplatform.HomeAdapters.HomeAdapter;
 import com.example.e_learningplatform.HomeClasses.Materii;
 import com.example.e_learningplatform.HomeProfessor.OptionsActivity;
@@ -48,8 +49,8 @@ public class HomeProfessorAdapter extends RecyclerView.Adapter<HomeProfessorAdap
     public void onBindViewHolder(@NonNull HomeProfessorAdapter.MyViewHolder holder, int position) {
 
         ProfessorMaterii materii = materiiArrayList.get(position);
-        holder.nume_materie_textView.setText(materii.getTitle());
-        holder.materie_imageView.setImageResource(materii.getImage());
+        holder.nume_materie_textView.setText(materii.getNume_materie());
+        Glide.with(context).load(materiiArrayList.get(position).getImagine()).into(holder.materie_imageView);
 
         holder.materie_imageView.setOnClickListener(new View.OnClickListener() {
             @Override

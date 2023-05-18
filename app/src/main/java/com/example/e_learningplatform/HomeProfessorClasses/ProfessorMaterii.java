@@ -3,30 +3,33 @@ package com.example.e_learningplatform.HomeProfessorClasses;
 public class ProfessorMaterii {
 
 
-    String title;
-    int image;
+    String nume_materie;
+    String imagine;
 
-    public ProfessorMaterii(String title, int image) {
-        this.title = title;
-        this.image = image;
+
+    public ProfessorMaterii(String nume_materie, String imagine) {
+        this.nume_materie = nume_materie;
+        this.imagine = imagine;
     }
 
-
-    public String getTitle() {
-        return title;
+    public String getNume_materie() {
+        return nume_materie;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setNume_materie(String nume_materie) {
+        this.nume_materie = nume_materie;
     }
 
-    public int getImage() {
-        return image;
+    public String getImagine() {
+        return imagine;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setImagine(String imagine) {
+        this.imagine = imagine;
     }
 
+    public ProfessorMaterii(){
+
+    }
 
 }
