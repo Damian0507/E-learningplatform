@@ -2,6 +2,9 @@ package com.example.e_learningplatform;
 
 import static android.content.ContentValues.TAG;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +20,9 @@ import com.example.e_learningplatform.Home.HomeStudentActivity;
 import com.example.e_learningplatform.HomeProfessor.HomeProfessorActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.appcheck.FirebaseAppCheck;
+import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -26,11 +32,18 @@ public class LoginActivity extends AppCompatActivity {
     Button sing_in_btn;
     EditText username, password;
     DatabaseReference reference;
+    DatabaseHelper databaseHelper;
+    Boolean User_saved = FALSE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseApp.initializeApp(/*context=*/ this);
+
+        FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.getInstance();
+        firebaseAppCheck.installAppCheckProviderFactory(
+                PlayIntegrityAppCheckProviderFactory.getInstance());
 
 
 
@@ -59,6 +72,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 username_string = username.getText().toString();
                 password_string = password.getText().toString();
+
+
 
                 Log.d(TAG, "sing_in: " +username.getText().toString());
 
@@ -95,6 +110,12 @@ public class LoginActivity extends AppCompatActivity {
                             String role = String.valueOf(dataSnapshot.child("Role").getValue());
                             if(role.equals("student")){
 
+                                if(User_saved.equals(FALSE)) {
+                                    databaseHelper = new DatabaseHelper(getApplicationContext());
+                                    databaseHelper.insertData(new Data(username));
+                                    User_saved = TRUE;
+                                }
+
                                 Intent i = new Intent(getApplicationContext(),HomeStudentActivity.class);
                                 startActivity(i);
                                 finish();
@@ -102,6 +123,12 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this,"Login succsefully!",Toast.LENGTH_SHORT).show();
 
                             }else{
+
+                                if(User_saved.equals(FALSE)) {
+                                    databaseHelper = new DatabaseHelper(getApplicationContext());
+                                    databaseHelper.insertData(new Data(username));
+                                    User_saved = TRUE;
+                                }
 
                                 String send_username;
                                 send_username = username;

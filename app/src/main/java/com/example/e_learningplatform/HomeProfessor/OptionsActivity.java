@@ -40,12 +40,17 @@ public class OptionsActivity extends AppCompatActivity {
     }
 
     private void add_course_button(){
+
+        Intent i = getIntent();
+        String nume = i.getStringExtra("Materie");
+
         add_course_button = findViewById(R.id.options_ad_course_button);
 
         add_course_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),AddCourseActivity.class);
+                i.putExtra("Materie", nume);
                 startActivity(i);
                 finish();
             }
@@ -59,8 +64,6 @@ public class OptionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), HomeProfessorActivity.class);
-                //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                //i.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 startActivity(i);
                 finish();
             }

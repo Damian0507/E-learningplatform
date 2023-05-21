@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.e_learningplatform.DatabaseHelper;
 import com.example.e_learningplatform.HomeAdapters.HomeAdapter;
 import com.example.e_learningplatform.HomeClasses.Materii;
 import com.example.e_learningplatform.HomeProfessorAdapters.HomeProfessorAdapter;
@@ -36,6 +37,7 @@ public class HomeProfessorFragment extends Fragment {
     ArrayList<ProfessorMaterii> materiiArrayList = new ArrayList<>();
     TextView nume_profesor_textView;
     DatabaseReference database;
+    DatabaseHelper databaseHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,15 +56,19 @@ public class HomeProfessorFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        databaseHelper = new DatabaseHelper(getContext());
 
 
         //get data from homeprofessoractivity
-        String username = getArguments().getString("Username");
+        String username = databaseHelper.fetchAllData();
         Log.d(TAG, "onViewCreated: " + username);
 
         //set welcome message
         nume_profesor_textView = view.findViewById(R.id.nume_profesor_textView);
         nume_profesor_textView.setText("Bună ziua, " +  username);
+
+        databaseHelper = new DatabaseHelper(getContext());
+        databaseHelper.fetchAllData();
 
 
         dateInitialize_home(username);

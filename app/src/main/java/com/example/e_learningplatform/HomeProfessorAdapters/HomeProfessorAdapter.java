@@ -1,8 +1,11 @@
 package com.example.e_learningplatform.HomeProfessorAdapters;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +59,8 @@ public class HomeProfessorAdapter extends RecyclerView.Adapter<HomeProfessorAdap
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(context, OptionsActivity.class);
+                i.putExtra("Materie",materii.getNume_materie());
+                Log.d(TAG, "onClick: " + materii.getNume_materie());
                 context.startActivity(i);
                 ((Activity)context).finish();
 
@@ -67,6 +72,7 @@ public class HomeProfessorAdapter extends RecyclerView.Adapter<HomeProfessorAdap
             public void onClick(View view) {
 
                 Intent i = new Intent(context, OptionsActivity.class);
+                i.putExtra("Materie",materii.getNume_materie());
                 context.startActivity(i);
                 ((Activity)context).finish();
 
