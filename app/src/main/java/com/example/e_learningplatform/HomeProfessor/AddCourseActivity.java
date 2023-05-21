@@ -114,7 +114,7 @@ public class AddCourseActivity extends AppCompatActivity {
 
         storageRefrence = FirebaseStorage.getInstance().getReference("Video");
         databaseReference = FirebaseDatabase.getInstance("https://e-learning-platform-3b8e7-default-rtdb.europe-west1.firebasedatabase.app").
-                getReference("Users").child("Materii").child(nume_materie);
+                getReference("Users").child("Materii").child(nume_materie).child("Cursuri");
 
         String numeCurs = nume_curs.getText().toString();
         String numeVideo = nume_video.getText().toString();
@@ -180,7 +180,7 @@ public class AddCourseActivity extends AppCompatActivity {
 
         storageRefrence = FirebaseStorage.getInstance().getReference("Cursuri");
         databaseReference = FirebaseDatabase.getInstance("https://e-learning-platform-3b8e7-default-rtdb.europe-west1.firebasedatabase.app").
-                getReference("Users").child("Materii").child(nume_materie);
+                getReference("Users").child("Materii").child(nume_materie).child("Cursuri");
 
         String numeCurs = nume_curs.getText().toString();
         String numeVideo = nume_video.getText().toString();
