@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.e_learningplatform.Student.CoursesStudentActivity;
 import com.example.e_learningplatform.HomeClasses.Materii;
 import com.example.e_learningplatform.R;
@@ -45,8 +46,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         Materii materii = materiiArrayList.get(position);
-        holder.nume_materie_textView.setText(materii.getTitle());
-        holder.materie_imageView.setImageResource(materii.getImage());
+        holder.nume_materie_textView.setText(materii.getTitlu());
+        Glide.with(context).load(materiiArrayList.get(position).getImagine()).into(holder.materie_imageView);
 
         holder.materie_imageView.setOnClickListener(new View.OnClickListener() {
             @Override

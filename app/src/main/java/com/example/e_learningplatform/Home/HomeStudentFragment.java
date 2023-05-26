@@ -1,5 +1,7 @@
 package com.example.e_learningplatform.Home;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,13 +11,23 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.e_learningplatform.DatabaseHelper;
 import com.example.e_learningplatform.HomeAdapters.HomeAdapter;
 import com.example.e_learningplatform.HomeClasses.Materii;
+import com.example.e_learningplatform.HomeProfessorClasses.ProfessorMaterii;
 import com.example.e_learningplatform.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -24,6 +36,8 @@ public class HomeStudentFragment extends Fragment {
 
     RecyclerView recyclerView;
     ArrayList<Materii> materiiArrayList = new ArrayList<>();
+    DatabaseReference database,database_an;
+    DatabaseHelper databaseHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,25 +53,102 @@ public class HomeStudentFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        
-        dateInitialize_home();
 
-        recyclerView = view.findViewById(R.id.materii_recycleView);
+        databaseHelper = new DatabaseHelper(getContext());
+
+
+        //get data from homeprofessoractivity
+        String username = databaseHelper.fetchAllData();
+        Log.d(TAG, "onViewCreated: " + username);
+        
+        dateInitialize_home(username);
+
+
+    }
+
+    private void dateInitialize_home(String username) {
+
+        recyclerView = getView().findViewById(R.id.materii_recycleView);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         HomeAdapter homeAdapter = new HomeAdapter(getContext(),materiiArrayList);
         recyclerView.setAdapter(homeAdapter);
         homeAdapter.notifyDataSetChanged();
         recyclerView.setHasFixedSize(true);
-    }
 
-    private void dateInitialize_home() {
+        database = FirebaseDatabase.getInstance("https://e-learning-platform-3b8e7-default-rtdb.europe-west1.firebasedatabase.app").
+                getReference("Users").child("Materii");
 
-        materiiArrayList.add(new Materii("Procesare paralela si distribuita",R.drawable.ppsd_image));
-        materiiArrayList.add(new Materii("Electronica de putere",R.drawable.edp_image));
-        materiiArrayList.add(new Materii("Prelucrarea semnalelor",R.drawable.pc_image));
-        materiiArrayList.add(new Materii("Condicerea structurilor flexibile de fabricatie",R.drawable.cpc_image));
-        materiiArrayList.add(new Materii("Programare orientata pe obiece",R.drawable.opo_image));
-        materiiArrayList.add(new Materii("Sisteme de conducere a procesor continue",R.drawable.sfdf_image));
+        database_an = FirebaseDatabase.getInstance("https://e-learning-platform-3b8e7-default-rtdb.europe-west1.firebasedatabase.app").
+                getReference("Users").child(username);
+
+
+
+
+        database_an.child("Specializare_an").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+
+
+                DataSnapshot dataSnapshot = task.getResult();
+                String an = String.valueOf(dataSnapshot.getValue());
+                Log.d(TAG, "onComplete: " + an);
+
+                database.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        materiiArrayList.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            Materii studentMaterii = dataSnapshot.getValue(Materii.class);
+                            Log.d(TAG, "onDataChange: " + studentMaterii.getAn());
+                            Log.d(TAG, "onDataChange: " + studentMaterii.getTitlu());
+                            Log.d(TAG, "onDataChange: " + studentMaterii.getImagine());
+
+                            if(studentMaterii.getAn().equals(an)) {
+
+                                materiiArrayList.add(studentMaterii);
+
+                            }
+
+
+
+                        }
+                        homeAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+            }
+        });
+
+
+
+//        database.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                materiiArrayList.clear();
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//
+//
+//                        Materii studentMaterii = dataSnapshot.getValue(Materii.class);
+//                        materiiArrayList.add(studentMaterii);
+//
+//
+//
+//
+//                }
+//                homeAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
 
 
     }

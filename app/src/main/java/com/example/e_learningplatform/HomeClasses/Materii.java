@@ -2,27 +2,40 @@ package com.example.e_learningplatform.HomeClasses;
 
 public class Materii {
 
-    String title;
-    int image;
+    String titlu;
+    String imagine;
+    String An;
 
-    public Materii(String title, int image) {
-        this.title = title;
-        this.image = image;
+    public Materii(String titlu, String image, String an) {
+        this.titlu = titlu;
+        this.imagine = image;
+        this.An = an;
+    }
+    public Materii(){
+
     }
 
-    public String getTitle() {
-        return title;
+    public String getAn() {
+        return An;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setAn(String an) {
+        this.An = an;
     }
 
-    public int getImage() {
-        return image;
+    public String getTitlu() {
+        return titlu;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setTitlu(String titlu) {
+        this.titlu = titlu;
+    }
+
+    public String getImagine() {
+        return imagine;
+    }
+
+    public void setImagine(String imagine) {
+        this.imagine = imagine;
     }
 }
