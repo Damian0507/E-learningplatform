@@ -56,6 +56,7 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.MyViewHo
 
                 /*TO DO: Check why app gets crash when jump backward to courses and trying to open course again*/
                 Intent i = new Intent(context, CourseActivity.class);
+                i.putExtra("nume_curs",cursuri.getNume_curs());
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
                ((Activity)context).finish();
