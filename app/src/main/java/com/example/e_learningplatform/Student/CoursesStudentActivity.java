@@ -55,7 +55,7 @@ public class CoursesStudentActivity extends AppCompatActivity {
         String materie = getIntent().getStringExtra("materie");
 
         if(materie != null) {
-            reference = FirebaseDatabase.getInstance("https://e-learning-platform-3b8e7-default-rtdb.europe-west1.firebasedatabase.app")
+            reference = FirebaseDatabase.getInstance("https://e-learning-platform-2-default-rtdb.europe-west1.firebasedatabase.app")
                     .getReference("Users").child("Materii");
             reference.child(materie).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
@@ -141,7 +141,7 @@ public class CoursesStudentActivity extends AppCompatActivity {
 
         recyclerView.setHasFixedSize(true);
 
-        database = FirebaseDatabase.getInstance("https://e-learning-platform-3b8e7-default-rtdb.europe-west1.firebasedatabase.app").
+        database = FirebaseDatabase.getInstance("https://e-learning-platform-2-default-rtdb.europe-west1.firebasedatabase.app").
                 getReference("Users").child("Materii").child(materie);
         database.child("Cursuri").addValueEventListener(new ValueEventListener() {
             @Override

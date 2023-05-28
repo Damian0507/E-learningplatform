@@ -1,5 +1,7 @@
 package com.example.e_learningplatform.Student;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.media3.common.MediaItem;
@@ -9,6 +11,7 @@ import androidx.media3.ui.PlayerView;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -42,10 +45,13 @@ public class CourseActivity extends AppCompatActivity {
 
         String nume_curs = getIntent().getStringExtra("nume_curs");
 
+        Log.d(TAG, "onCreate: " + nume_curs);
+
 
         databaseHelper = new DatabaseHelper(getApplicationContext());
         String nume_materie = databaseHelper.fetchAllDataMaterie();
-        databaseReference = FirebaseDatabase.getInstance("https://e-learning-platform-3b8e7-default-rtdb.europe-west1.firebasedatabase.app")
+        Log.d(TAG, "onCreate: " + nume_materie);
+        databaseReference = FirebaseDatabase.getInstance("https://e-learning-platform-2-default-rtdb.europe-west1.firebasedatabase.app")
                 .getReference("Users").child("Materii");
         databaseReference.child(nume_materie).child("Cursuri").child(nume_curs).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override

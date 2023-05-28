@@ -91,7 +91,7 @@ public class HomeProfessorFragment extends Fragment {
         recyclerView.setAdapter(homeProfessorAdapter);
         recyclerView.setHasFixedSize(true);
 
-        database = FirebaseDatabase.getInstance("https://e-learning-platform-3b8e7-default-rtdb.europe-west1.firebasedatabase.app").
+        database = FirebaseDatabase.getInstance("https://e-learning-platform-2-default-rtdb.europe-west1.firebasedatabase.app").
                 getReference("Users").child(username).child("Materii");
         database.addValueEventListener(new ValueEventListener() {
             @Override

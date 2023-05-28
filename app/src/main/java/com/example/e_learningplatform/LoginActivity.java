@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void readData(String username, String password){
 
-        reference = FirebaseDatabase.getInstance("https://e-learning-platform-3b8e7-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users");
+        reference = FirebaseDatabase.getInstance("https://e-learning-platform-2-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users");
         reference.child(username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
