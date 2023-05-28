@@ -123,7 +123,7 @@ public class AddCourseActivity extends AppCompatActivity {
         if(!TextUtils.isEmpty(numeCurs) && !numeVideo.equals("video.mp4") && !numePDF.equals("curs.pdf")){
 
             progressBar.setVisibility(View.VISIBLE);
-            StorageReference reference =  storageRefrence.child("Video");
+            StorageReference reference =  storageRefrence.child(numeVideo);
             uploadTask = reference.putFile(videoUri);
             Log.d(TAG, "uploadData: " + videoUri);
 
@@ -189,7 +189,7 @@ public class AddCourseActivity extends AppCompatActivity {
         if(!TextUtils.isEmpty(numeCurs) && !numeVideo.equals("video.mp4") && !numePDF.equals("curs.pdf")){
 
             progressBar2.setVisibility(View.VISIBLE);
-            StorageReference referencePDF =  storageRefrence.child("Cursuri");
+            StorageReference referencePDF =  storageRefrence.child(numePDF);
             uploadPDF = referencePDF.putFile(pdfUri);
             Log.d(TAG, "uploadPDF: "+ pdfUri);
 
