@@ -15,4 +15,9 @@ public class Cursuri {
     public void setNume_curs(String nume_curs) {
         this.nume_curs = nume_curs;
     }
+
+    public  Cursuri(){
+
+    }
+
 }

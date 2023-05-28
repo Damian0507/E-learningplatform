@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.e_learningplatform.DatabaseHelper;
 import com.example.e_learningplatform.Student.CoursesStudentActivity;
 import com.example.e_learningplatform.HomeClasses.Materii;
 import com.example.e_learningplatform.R;
@@ -23,6 +24,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
     Context context;
     ArrayList<Materii> materiiArrayList;
+
 
     public HomeAdapter(Context context, ArrayList<Materii> materiiArrayList) {
 
@@ -53,6 +55,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(context, CoursesStudentActivity.class);
+                i.putExtra("materie",materii.getTitlu());
                 context.startActivity(i);
                 ((Activity)context).finish();
 

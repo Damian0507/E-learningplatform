@@ -4,6 +4,7 @@ public class Data {
 
     private String nume;
 
+
     public Data(String nume) {
         this.nume = nume;
     }

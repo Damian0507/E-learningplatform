@@ -20,7 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table if not exists mytable(id integer primary key autoincrement,nume text)");
+        db.execSQL("create table if not exists mytable(id integer primary key autoincrement,nume text, profesor text, materie text)");
 
     }
 
@@ -40,6 +40,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long mytable = sqLiteDatabase.insert("mytable",null,contentValues);
         Log.e(TAG, "insertData: " + mytable );
 
+
+    }
+
+    public void insertDataProfessor(DateProfesor data){
+
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("nume",data.getStudent());
+        contentValues.put("profesor",data.getProfesor());
+        contentValues.put("materie",data.getMaterie());
+        long mytable = sqLiteDatabase.insert("mytable",null,contentValues);
+        Log.e(TAG, "insertData: " + mytable );
+
+
+    }
+
+    public String fetchAllDataProfessor(){
+        String professor_out = "";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from mytable",null,null);
+        while (cursor.moveToNext()){
+            String professor   = cursor.getString(2);
+            professor_out = professor;
+        }
+        return professor_out;
+
+    }
+    public String fetchAllDataMaterie(){
+        String materie_out = "";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from mytable",null,null);
+        while (cursor.moveToNext()){
+            String materie   = cursor.getString(3);
+            materie_out = materie;
+        }
+        return materie_out;
 
     }
 

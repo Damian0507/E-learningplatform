@@ -54,13 +54,13 @@ public class CourseActivity extends AppCompatActivity {
     private void play_video(){
 
 
-        playerView = findViewById(R.id.player_view_add_course_professor);
+        playerView = findViewById(R.id.player_view);
 
         player = new ExoPlayer.Builder(this).build();
 
         playerView.setPlayer(player);
 
-        MediaItem mediaItem = MediaItem.fromUri("https://firebasestorage.googleapis.com/v0/b/parkourapp2.appspot.com/o/20211010_183238_1.mp4?alt=media&token=ed071a9d-7b76-44ab-826c-5e270d646b3b");
+        MediaItem mediaItem = MediaItem.fromUri("https://firebasestorage.googleapis.com/v0/b/e-learning-platform-3b8e7.appspot.com/o/Video%2FVideo?alt=media&token=805c400e-b037-44f2-96a2-620b794638ae");
 
         player.setMediaItem(mediaItem);
 
