@@ -187,6 +187,7 @@ public class CoursesStudentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), SubmitTestActivity.class);
+                i.putExtra("materie",nume_materie_txt.getText());
                 startActivity(i);
                 finish();
             }

@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nume_materie_submit_test_textView" />
 
     <EditText
-        android:id="@+id/student_ID_editText"
+        android:id="@+id/nume_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -85,7 +85,7 @@
         android:layout_marginRight="36dp"/>
 
     <EditText
-        android:id="@+id/password_editText"
+        android:id="@+id/prenume_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -108,6 +108,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
+    <ProgressBar
+        android:id="@+id/progressBar_add_course3"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/blue_objects"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.519"
+
+        />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -120,7 +137,7 @@
         android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/student_ID_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/nume_editText" />
 
     <TextView
         android:id="@+id/nume_test_textView"
@@ -134,10 +151,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.211"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/prenume_editText" />
 
     <Button
-        android:id="@+id/sing_in_button"
+        android:id="@+id/submit_import_PDF_button"
         android:layout_width="165dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -154,18 +171,20 @@
         app:cornerRadius="10dp"
         app:iconTint="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nume_test_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/nume_test_textView"
+        android:onClick="StudentChoosePDF"/>
 
     <Button
-        android:id="@+id/submit_button"
+        android:id="@+id/submit_test_student_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="36dp"
         android:layout_marginTop="36dp"
+        android:layout_marginRight="36dp"
         android:backgroundTint="@color/blue_objects"
         android:backgroundTintMode="add"
-        android:layout_marginLeft="36dp"
-        android:layout_marginRight="36dp"
         android:fontFamily="@font/poppins_semibold"
+        android:onClick="StudentChoosePDF"
         android:paddingTop="8dp"
         android:text="Submit"
         android:textAllCaps="false"
@@ -177,7 +196,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sing_in_button"
+        app:layout_constraintTop_toBottomOf="@+id/submit_import_PDF_button"
         app:layout_constraintVertical_bias="0.0" />
 
 

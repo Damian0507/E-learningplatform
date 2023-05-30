@@ -55,9 +55,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public void sing_in(){
 
-        sing_in_btn = findViewById(R.id.sing_in_button);
+        sing_in_btn = findViewById(R.id.submit_import_PDF_button);
         username = findViewById(R.id.user_ID_editText);
-        password = findViewById(R.id.password_editText);
+        password = findViewById(R.id.prenume_editText);
 
 
 

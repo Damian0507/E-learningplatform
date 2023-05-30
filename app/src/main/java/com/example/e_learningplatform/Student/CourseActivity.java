@@ -10,6 +10,7 @@ import androidx.media3.ui.PlayerView;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +25,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class CourseActivity extends AppCompatActivity {
 
@@ -115,9 +124,43 @@ public class CourseActivity extends AppCompatActivity {
 
         pdfView = findViewById(R.id.curs_PDFView);
 
-        pdfView.fromUri(uri).load();
+        new RetrievePDFfromUrl().execute(String.valueOf(uri));
 
+    }
 
+    // create an async task class for loading pdf file from URL.
+    class RetrievePDFfromUrl extends AsyncTask<String, Void, InputStream> {
+        @Override
+        protected InputStream doInBackground(String... strings) {
+            // we are using inputstream
+            // for getting out PDF.
+            InputStream inputStream = null;
+            try {
+                URL url = new URL(strings[0]);
+                // below is the step where we are
+                // creating our connection.
+                HttpURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
+                if (urlConnection.getResponseCode() == 200) {
+                    // response is success.
+                    // we are getting input stream from url
+                    // and storing it in our variable.
+                    inputStream = new BufferedInputStream(urlConnection.getInputStream());
+                }
 
+            } catch (IOException e) {
+                // this is the method
+                // to handle errors.
+                e.printStackTrace();
+                return null;
+            }
+            return inputStream;
+        }
+
+        @Override
+        protected void onPostExecute(InputStream inputStream) {
+            // after the execution of our async
+            // task we are loading our pdf in our pdf view.
+            pdfView.fromStream(inputStream).load();
+        }
     }
 }
