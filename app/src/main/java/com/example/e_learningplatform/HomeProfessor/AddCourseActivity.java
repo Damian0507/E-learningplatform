@@ -96,6 +96,8 @@ public class AddCourseActivity extends AppCompatActivity {
 
 
 
+
+
             }
         });
 
@@ -158,6 +160,10 @@ public class AddCourseActivity extends AppCompatActivity {
                         //String i = databaseReference.push().getKey();
                         databaseReference.child(numeCurs).child("nume_curs").setValue(nume_curs);
                         databaseReference.child(numeCurs).child("video").setValue(video);
+
+                        Intent i = new Intent(getApplicationContext(),HomeProfessorActivity.class);
+                        startActivity(i);
+                        finish();
 
 
                     }else {

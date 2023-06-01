@@ -67,9 +67,34 @@
         app:layout_constraintTop_toBottomOf="@+id/materie_options_textView" />
 
     <Button
+        android:id="@+id/options_ad_test_button"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="36dp"
+        android:backgroundTint="@color/blue_objects"
+        android:backgroundTintMode="add"
+        android:fontFamily="@font/poppins_semibold"
+        android:paddingTop="8dp"
+        android:text="Adaugă test"
+        android:textAllCaps="false"
+        android:textSize="18dp"
+        android:textStyle="normal"
+        app:cornerRadius="10dp"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.777"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/options_ad_course_button" />
+
+    <Button
         android:id="@+id/options_check_exams_button"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="36dp"
         android:backgroundTint="@color/blue_objects"
         android:backgroundTintMode="add"
         android:fontFamily="@font/poppins_semibold"
@@ -82,9 +107,6 @@
         app:iconTint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/options_ad_course_button"
-        android:layout_marginLeft="36dp"
-        android:layout_marginRight="36dp"
-        android:layout_marginTop="26dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/options_ad_test_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

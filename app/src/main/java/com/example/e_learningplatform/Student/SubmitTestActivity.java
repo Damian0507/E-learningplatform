@@ -108,7 +108,7 @@ import com.google.firebase.storage.UploadTask;
          databaseHelper = new DatabaseHelper(getApplicationContext());
          String id = databaseHelper.fetchAllData();
 
-         storageRefrence = FirebaseStorage.getInstance().getReference("Video");
+         storageRefrence = FirebaseStorage.getInstance().getReference("Test_elevi");
          databaseReference = FirebaseDatabase.getInstance("https://e-learning-platform-2-default-rtdb.europe-west1.firebasedatabase.app").
                  getReference("Users").child("Materii").child(materie).child(id);
 
@@ -140,7 +140,7 @@ import com.google.firebase.storage.UploadTask;
                          Uri downloadUrl = task.getResult();
                          progressBar.setVisibility(View.INVISIBLE);
                          test = downloadUrl.toString();
-                         databaseReference.child("TEST").setValue(test);
+                         databaseReference.child("TEST2").setValue(test);
                          databaseReference.child("nume").setValue(nume_complet);
                          databaseReference.child("status").setValue(status);
 
