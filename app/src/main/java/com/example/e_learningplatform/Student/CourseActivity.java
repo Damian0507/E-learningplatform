@@ -4,6 +4,8 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.media3.common.MediaItem;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.media3.ui.PlayerView;
@@ -44,11 +46,18 @@ public class CourseActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     Uri pdfUri,videoUri;
     TextView curs_txt;
+    ConstraintLayout constraintLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
+
+        constraintLayout = findViewById(R.id.parent_layout);
+
+        pdfView = findViewById(R.id.curs_PDFView);
+
+        playerView = findViewById(R.id.player_view);
 
         curs_txt = findViewById(R.id.nr_curs_textView);
 
@@ -56,25 +65,55 @@ public class CourseActivity extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: " + nume_curs);
 
+        if(!nume_curs.equals("Test")) {
+            databaseHelper = new DatabaseHelper(getApplicationContext());
+            String nume_materie = databaseHelper.fetchAllDataMaterie();
+            Log.d(TAG, "onCreate: " + nume_materie);
+            databaseReference = FirebaseDatabase.getInstance("https://e-learning-platform-2-default-rtdb.europe-west1.firebasedatabase.app")
+                    .getReference("Users").child("Materii");
+            databaseReference.child(nume_materie).child("Cursuri").child(nume_curs).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    DataSnapshot dataSnapshot = task.getResult();
+                    pdfUri = Uri.parse(dataSnapshot.child("curs").getValue().toString());
+                    videoUri = Uri.parse(dataSnapshot.child("video").getValue().toString());
+                    curs_txt.setText(dataSnapshot.child("nume_curs").getValue().toString());
 
-        databaseHelper = new DatabaseHelper(getApplicationContext());
-        String nume_materie = databaseHelper.fetchAllDataMaterie();
-        Log.d(TAG, "onCreate: " + nume_materie);
-        databaseReference = FirebaseDatabase.getInstance("https://e-learning-platform-2-default-rtdb.europe-west1.firebasedatabase.app")
-                .getReference("Users").child("Materii");
-        databaseReference.child(nume_materie).child("Cursuri").child(nume_curs).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                DataSnapshot dataSnapshot = task.getResult();
-                pdfUri = Uri.parse(dataSnapshot.child("curs").getValue().toString());
-                videoUri = Uri.parse(dataSnapshot.child("video").getValue().toString());
-                curs_txt.setText(dataSnapshot.child("nume_curs").getValue().toString());
+                    play_video(videoUri);
 
-                play_video(videoUri);
+                    set_PDF(pdfUri);
+                }
+            });
+        }
+        else
+        {
+            databaseHelper = new DatabaseHelper(getApplicationContext());
+            String nume_materie = databaseHelper.fetchAllDataMaterie();
+            Log.d(TAG, "onCreate: " + nume_materie);
+            databaseReference = FirebaseDatabase.getInstance("https://e-learning-platform-2-default-rtdb.europe-west1.firebasedatabase.app")
+                    .getReference("Users").child("Materii");
+            databaseReference.child(nume_materie).child("Cursuri").child(nume_curs).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    DataSnapshot dataSnapshot = task.getResult();
+                    pdfUri = Uri.parse(dataSnapshot.child("test2").getValue().toString());
+                    //videoUri = Uri.parse(dataSnapshot.child("video").getValue().toString());
+                    curs_txt.setText(dataSnapshot.child("nume_curs").getValue().toString());
 
-                set_PDF(pdfUri);
-            }
-        });
+                    //play_video(videoUri);
+                    playerView.setVisibility(View.INVISIBLE);
+
+                    ConstraintSet constraintSet = new ConstraintSet();
+                    constraintSet.clone(constraintLayout);
+                    constraintSet.connect(R.id.curs_PDFView,ConstraintSet.TOP,R.id.nr_curs_textView,ConstraintSet.BOTTOM,0);
+                    constraintSet.applyTo(constraintLayout);
+
+                    set_PDF(pdfUri);
+                }
+
+            });
+        }
+
 
 
 
@@ -89,7 +128,9 @@ public class CourseActivity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                player.pause();
+                if(videoUri != null) {
+                    player.pause();
+                }
                 Intent i = new Intent(getApplicationContext(), CoursesStudentActivity.class);
                 //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
@@ -104,7 +145,7 @@ public class CourseActivity extends AppCompatActivity {
     private void play_video(Uri uri){
 
 
-        playerView = findViewById(R.id.player_view);
+
 
         player = new ExoPlayer.Builder(this).build();
 
@@ -122,7 +163,7 @@ public class CourseActivity extends AppCompatActivity {
 
     private void set_PDF(Uri uri){
 
-        pdfView = findViewById(R.id.curs_PDFView);
+
 
         new RetrievePDFfromUrl().execute(String.valueOf(uri));
 
