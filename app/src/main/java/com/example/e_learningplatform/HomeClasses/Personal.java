@@ -2,36 +2,29 @@ package com.example.e_learningplatform.HomeClasses;
 
 public class Personal {
 
-    String title,percent_text;
-      int  percent;
+  String materie,punctaj;
 
-    public Personal(String title,String percent_text, int percent) {
-        this.title = title;
-        this.percent = percent;
-        this.percent_text = percent_text;
+    public Personal(String materie, String punctaj) {
+        this.materie = materie;
+        this.punctaj = punctaj;
     }
 
-    public String getPercent_text() {
-        return percent_text;
+    public String getMaterie() {
+        return materie;
+    }
+    public Personal(){
+
     }
 
-    public void setPercent_text(String percent_text) {
-        this.percent_text = percent_text;
+    public void setMaterie(String materie) {
+        this.materie = materie;
     }
 
-    public String getTitle() {
-        return title;
+    public String getPunctaj() {
+        return punctaj;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getPercent() {
-        return percent;
-    }
-
-    public void setPercent(int percent) {
-        this.percent = percent;
+    public void setPunctaj(String punctaj) {
+        this.punctaj = punctaj;
     }
 }

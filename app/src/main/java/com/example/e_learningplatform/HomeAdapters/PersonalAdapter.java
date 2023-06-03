@@ -40,9 +40,9 @@ public class PersonalAdapter extends RecyclerView.Adapter<PersonalAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         Personal personal = personalArrayList.get(position);
-        holder.personal_progres_bar.setProgress(personal.getPercent());
-        holder.percent_textView.setText(personal.getPercent_text());
-        holder.materie_textView.setText(personal.getTitle());
+        holder.personal_progres_bar.setProgress(Integer.parseInt(personal.getPunctaj()));
+        holder.percent_textView.setText(personal.getPunctaj());
+        holder.materie_textView.setText(personal.getMaterie());
 
     }
 

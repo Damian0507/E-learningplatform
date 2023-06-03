@@ -1,5 +1,7 @@
 package com.example.e_learningplatform.Home;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,22 +11,30 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.e_learningplatform.DatabaseHelper;
 import com.example.e_learningplatform.HomeAdapters.HomeAdapter;
 import com.example.e_learningplatform.HomeAdapters.PersonalAdapter;
 import com.example.e_learningplatform.HomeClasses.Materii;
 import com.example.e_learningplatform.HomeClasses.Personal;
 import com.example.e_learningplatform.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class PersonalHomeFragment extends Fragment {
     RecyclerView recyclerView;
     ArrayList<Personal> personalArrayList = new ArrayList<>();
-
+    DatabaseHelper databaseHelper;
+    DatabaseReference databaseReference;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,26 +46,53 @@ public class PersonalHomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        dateInitialize_personal();
 
-        recyclerView = view.findViewById(R.id.personal_recyclerView);
+        databaseHelper = new DatabaseHelper(getContext());
+        String username = databaseHelper.fetchAllData();
+
+
+
+
+        dateInitialize_personal(username);
+
+
+    }
+
+    private void dateInitialize_personal(String username) {
+
+        recyclerView = getView().findViewById(R.id.personal_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         PersonalAdapter personalAdapter = new PersonalAdapter(getContext(),personalArrayList);
         recyclerView.setAdapter(personalAdapter);
-        personalAdapter.notifyDataSetChanged();
         recyclerView.setHasFixedSize(true);
-    }
 
-    private void dateInitialize_personal() {
+        databaseReference = FirebaseDatabase.getInstance("https://e-learning-platform-2-default-rtdb.europe-west1.firebasedatabase.app").
+                getReference("Users").child("Materii");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                personalArrayList.clear();
+
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+
+
+                    Personal personal = dataSnapshot.child("Teste").child(username).getValue(Personal.class);
+                    personalArrayList.add(personal);
+                    Log.d(TAG, "onDataChange: is aici" + dataSnapshot.child("Teste").child(username).getValue());
+
+                }
+                personalAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
 
-        personalArrayList.add(new Personal("Procesare paralela si distribuita","70%",70));
-        personalArrayList.add(new Personal("Electronica de putere","50%",50));
-        personalArrayList.add(new Personal("Prelucrarea semnalelor","30%",30));
-        personalArrayList.add(new Personal("Condicerea structurilor flexibile de fabricatie","80%",80));
-        personalArrayList.add(new Personal("Programare orientata pe obiece","76%",76));
-        personalArrayList.add(new Personal("Sisteme de conducere a procesor continue","95%",95));
 
 
     }
