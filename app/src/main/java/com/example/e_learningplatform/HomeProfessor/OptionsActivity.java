@@ -28,12 +28,17 @@ public class OptionsActivity extends AppCompatActivity {
     }
 
     private void check_exam_button(){
+
+        Intent i = getIntent();
+        String nume = i.getStringExtra("Materie");
+
         check_exam_button = findViewById(R.id.options_check_exams_button);
 
         check_exam_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), TestEvaluationActivity.class);
+                i.putExtra("Materie", nume);
                 startActivity(i);
                 finish();
             }
