@@ -26,19 +26,15 @@ import com.example.e_learningplatform.Student.CoursesStudentActivity;
 import java.util.ArrayList;
 
 public class HomeProfessorAdapter extends RecyclerView.Adapter<HomeProfessorAdapter.MyViewHolder> {
-
-
     Context context;
     ArrayList<ProfessorMaterii> materiiArrayList;
-
     public HomeProfessorAdapter(Context context, ArrayList<ProfessorMaterii> materiiArrayList) {
 
         this.context = context;
         this.materiiArrayList = materiiArrayList;
-
-
     }
 
+    
     @NonNull
     @Override
     public HomeProfessorAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -63,38 +59,31 @@ public class HomeProfessorAdapter extends RecyclerView.Adapter<HomeProfessorAdap
                 Log.d(TAG, "onClick: " + materii.getNume_materie());
                 context.startActivity(i);
                 ((Activity)context).finish();
-
             }
         });
-
         holder.nume_materie_textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent i = new Intent(context, OptionsActivity.class);
                 i.putExtra("Materie",materii.getNume_materie());
                 context.startActivity(i);
                 ((Activity)context).finish();
-
             }
         });
-
     }
-
     @Override
     public int getItemCount() {
         return materiiArrayList.size();
     }
 
+
+
+
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-
-
         ImageView materie_imageView;
         TextView nume_materie_textView;
-
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
             materie_imageView = itemView.findViewById(R.id.materie_imageView);
             nume_materie_textView = itemView.findViewById(R.id.nume_materie_textView);
         }

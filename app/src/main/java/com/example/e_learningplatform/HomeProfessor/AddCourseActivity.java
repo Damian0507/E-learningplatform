@@ -115,6 +115,8 @@ public class AddCourseActivity extends AppCompatActivity {
         professorAddVideo = new ProfessorAddVideo();
 
         storageRefrence = FirebaseStorage.getInstance().getReference("Video");
+
+
         databaseReference = FirebaseDatabase.getInstance("https://e-learning-platform-2-default-rtdb.europe-west1.firebasedatabase.app").
                 getReference("Users").child("Materii").child(nume_materie).child("Cursuri");
 
@@ -315,7 +317,7 @@ public class AddCourseActivity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), OptionsActivity.class);
+                Intent i = new Intent(getApplicationContext(), HomeProfessorActivity.class);
                 //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 //i.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 startActivity(i);

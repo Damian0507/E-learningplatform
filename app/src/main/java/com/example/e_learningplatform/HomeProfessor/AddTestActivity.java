@@ -166,7 +166,7 @@ public class AddTestActivity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), OptionsActivity.class);
+                Intent i = new Intent(getApplicationContext(), HomeProfessorActivity.class);
                 //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 //i.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 startActivity(i);

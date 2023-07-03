@@ -7,17 +7,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.e_learningplatform.R;
 
 public class OptionsActivity extends AppCompatActivity {
 
     Button back_button, add_course_button, check_exam_button, add_test_button;
+    TextView nume_materie_textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
+
+        Intent i = getIntent();
+        String nume = i.getStringExtra("Materie");
+
+        nume_materie_textView = findViewById(R.id.materie_options_textView);
+        nume_materie_textView.setText(nume);
+
 
         back_button();
         add_course_button();
@@ -31,6 +40,7 @@ public class OptionsActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         String nume = i.getStringExtra("Materie");
+
 
         check_exam_button = findViewById(R.id.options_check_exams_button);
 

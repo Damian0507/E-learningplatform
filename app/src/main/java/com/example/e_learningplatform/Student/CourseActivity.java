@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.e_learningplatform.DatabaseHelper;
+import com.example.e_learningplatform.Home.HomeStudentActivity;
 import com.example.e_learningplatform.R;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -108,7 +109,9 @@ public class CourseActivity extends AppCompatActivity {
                     constraintSet.connect(R.id.curs_PDFView,ConstraintSet.TOP,R.id.nr_curs_textView,ConstraintSet.BOTTOM,0);
                     constraintSet.applyTo(constraintLayout);
 
+                    Log.d(TAG, "onComplete: " + pdfUri);
                     set_PDF(pdfUri);
+
                 }
 
             });
@@ -131,7 +134,7 @@ public class CourseActivity extends AppCompatActivity {
                 if(videoUri != null) {
                     player.pause();
                 }
-                Intent i = new Intent(getApplicationContext(), CoursesStudentActivity.class);
+                Intent i = new Intent(getApplicationContext(), HomeStudentActivity.class);
                 //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 startActivity(i);
